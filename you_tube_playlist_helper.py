@@ -24,7 +24,7 @@ ch.setFormatter(formatter)
 logger.addHandler(rfh)
 logger.addHandler(ch)
 
-client_secrets_file_path = os.path.join(module_path, 'secrets', 'client_secrets.json')
+client_secret_file_path = os.path.join(module_path, 'secrets', 'client_secret.json')
 users_file_path = os.path.join(module_path, 'secrets', 'users.json')
 scopes = ['https://www.googleapis.com/auth/youtube']
 api_service_name = 'youtube'
@@ -35,6 +35,7 @@ snippet = 'snippet'
 title = 'title'
 id = 'id'
 playlistItems = 'playlistItems'
+
 
 def choose_playlist() -> int:
     prompt = ''
@@ -248,7 +249,7 @@ actions = {
 
 
 def get_new_user_creds(name: str) -> Credentials:
-    flow = InstalledAppFlow.from_client_secrets_file(client_secrets_file_path, scopes)
+    flow = InstalledAppFlow.from_client_secrets_file(client_secret_file_path, scopes)
     creds = flow.run_local_server(
         host='localhost', port=8080, authorization_prompt_message='Please visit this URL: {url}',
         success_message='Authorization complete. You may close this window.', open_browser=True)
@@ -290,8 +291,8 @@ def main():
     logger.debug(f'@ {inspect.stack()[0][3]}')
     logger.debug(app_name)
 
-    if not os.path.isfile(client_secrets_file_path):
-        logger.warning(f'Could not file "{client_secrets_file_path}"')
+    if not os.path.isfile(client_secret_file_path):
+        logger.warning(f'Could not file "{client_secret_file_path}"')
         return
 
     if not os.path.isfile(users_file_path):
@@ -355,17 +356,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-
-# https://developers.google.com/resources/api-libraries/documentation/youtube/v3/python/latest/
-
-# The CLIENT_SECRETS_FILE variable specifies the name of a file that contains
-# the OAuth 2.0 information for this application, including its client_id and
-# client_secret. You can acquire an OAuth 2.0 client ID and client secret from
-# the {{ Google Cloud Console }} at
-# {{ https://cloud.google.com/console }}.
-# Please ensure that you have enabled the YouTube Data API for your project.
-# For more information about using OAuth2 to access the YouTube Data API, see:
-#   https://developers.google.com/youtube/v3/guides/authentication
-# For more information about the client_secrets.json file format, see:
-#   https://developers.google.com/api-client-library/python/guide/aaa_client_secrets
