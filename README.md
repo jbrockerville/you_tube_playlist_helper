@@ -28,6 +28,6 @@ to provide missing playlist operations such as sorting and randomizing.
 - Hitting *Enter* on an empty prompt returns you to the previous prompt or exits
 
 ## Resources
-- [Python YouTube Data API](https://developers.google.com/resources/api-libraries/documentation/youtube/v3/python/latest/)
+- [Python YouTube Data API Documentation](https://developers.google.com/resources/api-libraries/documentation/youtube/v3/python/latest/)
 - [Python Google API Client](https://github.com/googleapis/google-api-python-client)
-- [YouTube Data API and OAuth2](https://developers.google.com/youtube/v3/guides/authentication)
+- [YouTube Data API and OAuth2 Guide](https://developers.google.com/youtube/v3/guides/authentication)
